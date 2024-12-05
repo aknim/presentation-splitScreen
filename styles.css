@@ -94,3 +94,16 @@ body {
     cursor: pointer;
 }
 
+.floating-box {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 120px;
+    height: 80px;
+    background-color: white;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    resize: none;
+    padding: 8px;
+}
