@@ -41,8 +41,17 @@
             </div>
         </div>
         <div class="right-panel">
+            <div id="presentation-mode-label">
+                <label>
+                    <input type="checkbox" id="presentation-mode"> Presentation Mode
+                </label>
+            </div>
             <!-- One uneditable text box-->
-             <textarea class="readonly-box" readonly></textarea>
+             <textarea class="readonly-box" id="presentation-box" readonly></textarea>
+             <div class="navigation-buttons">
+                <button id="backward-btn">Backward</button>
+                <button id="forward-btn">Forward</button>
+             </div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -28,7 +28,8 @@ body {
     width: 50%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     background-color: #e0e0e0;
 }
 
@@ -74,3 +75,22 @@ body {
     cursor: move;
     box-sizing: border-box;
 }
+
+#presentation-mode-label {
+    position: relative;
+    top: 0;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.navigation-buttons {
+    margin-top: 10px;
+}
+
+.navigation-buttons button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+

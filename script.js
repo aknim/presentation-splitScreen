@@ -1,5 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
     const leftPanel = document.getElementById('left-panel');
+    const presentationModeCheckBox = document.getElementById('presentation-mode');
+    const presentationBox = document.getElementById('presentation-box');
+    const forwardBtn = document.getElementById('forward-btn');
+    const backwardBtn = document.getElementById('backward-btn');
+
+    let isPresentationMode = false;
+    let currentLines = [];
+    let currentIndex = -1;
+
+    presentationModeCheckBox.addEventListener('change', (e) => {
+        isPresentationMode = e.target.checked;
+        if(!isPresentationMode) {
+            currentLines = [];
+            currentIndex = -1;
+            presentationBox.value = '';
+        }
+    });
+
+    // left panel text box - click
+    leftPanel.addEventListener('click', (e) => {
+        if (isPresentationMode && e.target.tagName === 'TEXTAREA'){
+            const content = e.target.value;
+            currentLines = content.split('\n');
+            currentIndex = -1;
+            presentationBox.value = '';
+        }
+    });
+
+    // Navigate to the next line
+    forwardBtn.addEventListener('click', () => {
+        if (currentLines.length > 0 && currentIndex < currentLines.length - 1) {
+            currentIndex++;
+            presentationBox.value = currentLines[currentIndex];
+        }
+    });
+
+    // Navigate to the previous line
+    backwardBtn.addEventListener('click', () => {
+        if (currentLines.length > 0 && currentIndex > 0) {
+            currentIndex--;
+            presentationBox.value = currentLines[currentIndex];
+        }
+    });
 
     function makeDraggable(element) {
         let offsetX = 0;
