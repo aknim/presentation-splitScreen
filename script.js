@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const floatingBox = document.getElementById('floating-box');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    // Start dragging
+    floatingBox.addEventListener('mousedown', (e) => {
+        isDragging = true;
+
+        offsetX = e.clientX - floatingBox.getBoundingClientRect().left;
+        offsetY = e.clientY - floatingBox.getBoundingClientRect().top;
+
+        // Apply a visual cue for dragging
+        floatingBox.style.cursor = 'grabbing';
+    });
+
+    // Drag the box
+    document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+            const newLeft = e.clientX - offsetX;
+            const newTop = e.clientY - offsetY;
+
+            floatingBox.style.left = `${newLeft}px`;
+            floatingBox.style.top = `${newTop}px`;
+        }
+    });
+
+    // Stop dragging
+    document.addEventListener('mouseup', () => {
+        if (isDragging) {
+            isDragging = false;
+            // Reset the cursor style
+            floatingBox.style.cursor = 'grab';
+        }
+    })
+
+    // Set the initial cursor style
+    floatingBox.style.cursor = 'grab';
+
     const leftPanel = document.getElementById('left-panel');
     const presentationModeCheckBox = document.getElementById('presentation-mode');
     const presentationBox = document.getElementById('presentation-box');
